@@ -15,6 +15,7 @@ class Berita extends Model
         'author',
         'published_at',
         'image',
+        'keterangan_gambar'
     ];
     public static $beritas = [
         [
@@ -24,6 +25,7 @@ class Berita extends Model
             'author' => 'Admin',
             'published_at' => '2023-10-01 10:00:00',
             'image' => 'berita1.jpg',
+            'keterangan_gambar' => 'Keterangan gambar berita pertama.',
         ],
         [
             'id' => 2,
@@ -32,6 +34,7 @@ class Berita extends Model
             'author' => 'Editor',
             'published_at' => '2023-10-02 11:00:00',
             'image' => 'berita2.jpg',
+            'keterangan_gambar' => 'Keterangan gambar berita kedua.',
         ],
         [
             'id' => 3,
@@ -40,6 +43,7 @@ class Berita extends Model
             'author' => 'Reporter',
             'published_at' => '2023-10-03 12:00:00',
             'image' => 'berita3.jpg',
+            'keterangan_gambar' => 'Keterangan gambar berita ketiga.',
         ],
     ];
 
