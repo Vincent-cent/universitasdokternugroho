@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="id">
+@extends('Layout.mainLayout')
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Detail Berita</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+@section('title', 'Detail Berita - Universitas Doktor Nugroho')
 
-<body class="bg-light text-dark">
+@section('content')
+@if($berita)
+<div class="bg-light text-dark">
     <header class="py-3 border-bottom">
         <div class="container">
             <a href="/berita" class="btn btn-outline-secondary" aria-label="Kembali">
@@ -34,13 +30,22 @@
         </article>
     </main>
 
-    <footer class="border-top py-3">
+    <div class="border-top py-3">
         <div class="container text-end text-muted small">
             {{ $berita['author'] }} · {{ $berita['published_at'] }}
         </div>
-    </footer>
+    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+</div>
+@else
+<div class="container">
+    <div class="alert alert-warning" role="alert">
+        <h4 class="alert-heading">Berita Tidak Ditemukan</h4>
+        <p>Maaf, berita yang Anda cari tidak dapat ditemukan.</p>
+        <hr>
+        <p class="mb-0"><a href="/berita" class="btn btn-primary">← Kembali ke Daftar Berita</a></p>
+    </div>
+</div>
+@endif
 
-</html>
+@endsection

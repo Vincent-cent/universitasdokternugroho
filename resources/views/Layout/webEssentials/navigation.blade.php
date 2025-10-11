@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Universitas Doktor Nugroho</a>
+    <a class="navbar-brand" href="/">Universitas Doktor Nugroho</a>
 
     <button
       class="navbar-toggler"
@@ -16,13 +16,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Beranda</a>
+          <a class="nav-link active" aria-current="page" href="/">Beranda</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Tentang</a>
+          <a class="nav-link" href="/tentang">Tentang</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Program</a>
+          <a class="nav-link" href="/program">Program</a>
+        </li>
+          <li class="nav-item">
+          <a class="nav-link" href="/berita">Berita</a>
         </li>
         <li class="nav-item dropdown">
           <a

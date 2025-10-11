@@ -10,15 +10,21 @@ class BeritaController extends Controller
 {
     public function index()
     {
-        return view('layout.berita.berita', [
+        return view('Layout.berita.berita', [
             'beritas' => Berita::allBeritas()
         ]);
     }
     public function show($id)
     {
-    return view('layout.berita.beritadetail', [
-        'berita' => Berita::findBerita($id)
-    ]);
+        $berita = Berita::findBerita($id);
+        
+        if (!$berita) {
+            abort(404);
+        }
+        
+        return view('Layout.berita.beritadetail', [
+            'berita' => $berita
+        ]);
     }
     
 }

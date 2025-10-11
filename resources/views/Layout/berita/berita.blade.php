@@ -1,4 +1,8 @@
+@extends('Layout.mainLayout')
 
+@section('title', 'Detail Berita - Universitas Doktor Nugroho')
+
+@section('content')
     <table class="table">
         <thead>
             <tr>
@@ -19,3 +23,4 @@
             @endforeach
         </tbody>
     </table>
+@endsection
