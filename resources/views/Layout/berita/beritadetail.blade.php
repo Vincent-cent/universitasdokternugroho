@@ -15,27 +15,27 @@
 
     <main>
         <article class="container py-4" aria-labelledby="judul-berita">
-            <h1 id="judul-berita" class="fw-bold mb-2 text-center">{{ $berita['title'] }}</h1>
-            <p class="text-muted mb-4">{{ $berita['author'] }} · {{ $berita['published_at'] }}</p>
+            <h1 id="judul-berita" class="fw-bold mb-2 text-center">{{ $berita->title }}</h1>
+            <p class="text-muted mb-4">{{ $berita->author }} · {{ \Carbon\Carbon::parse($berita->published_at)->format('d M Y H:i') }}</p>
 
             <div class="card mb-4">
-                @if(!empty($berita['image']) && file_exists(public_path('storage/' . $berita['image'])))
-                    <img src="{{ asset('storage/' . $berita['image']) }}" class="card-img-top" alt="Gambar berita">
+                @if(!empty($berita->image) && file_exists(public_path('storage/' . $berita->image)))
+                    <img src="{{ asset('storage/' . $berita->image) }}" class="card-img-top" alt="Gambar berita">
                 @else
                     <img src="{{ asset('placeholder.jpg') }}" class="card-img-top" alt="Gambar placeholder">
                 @endif
-                <div class="card-footer text-muted small">{{ $berita['keterangan_gambar'] }}</div>
+                <div class="card-footer text-muted small">{{ $berita->keterangan_gambar }}</div>
             </div>
 
             <section class="mb-4">
-                <p><strong></strong> {{ $berita['content'] }}</p>
+                <p>{{ $berita->content }}</p>
             </section>
         </article>
     </main>
 
     <div class="border-top py-3">
         <div class="container text-end text-muted small">
-            {{ $berita['author'] }} · {{ $berita['published_at'] }}
+            {{ $berita->author }} · {{ \Carbon\Carbon::parse($berita->published_at)->format('d M Y H:i') }}
         </div>
     </div>
 

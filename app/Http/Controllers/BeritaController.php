@@ -8,12 +8,29 @@ use App\Http\Requests\UpdateBeritaRequest;
 
 class BeritaController extends Controller
 {
+
+
     public function index()
     {
+        return view('Layout.berita.berita', [
+            'beritas' => Berita::orderBy('published_at', 'desc')->get()
+        ]);
+    }
+
+    public function show($id)
+    {
+        $berita = Berita::find($id);
+        return view('Layout.berita.beritadetail', compact('berita'));
+    }
+
+    /*
         return view('Layout.berita.berita', [
             'beritas' => Berita::allBeritas()
         ]);
     }
+    */
+
+    /*
     public function show($id)
     {
         $berita = Berita::findBerita($id);
@@ -26,5 +43,5 @@ class BeritaController extends Controller
             'berita' => $berita
         ]);
     }
-    
+    */
 }

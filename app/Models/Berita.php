@@ -10,6 +10,7 @@ class Berita extends Model
     use HasFactory;
     
     protected $fillable = [
+        'id',
         'title',
         'content',
         'author',
@@ -17,6 +18,7 @@ class Berita extends Model
         'image',
         'keterangan_gambar'
     ];
+    /*
     public static $beritas = [
         [
             'id' => 1,
@@ -62,5 +64,6 @@ class Berita extends Model
         }
         return null;
     }
+        */
 
 }
