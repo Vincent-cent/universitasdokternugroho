@@ -1,21 +1,20 @@
-<nav class="navbar navbar-expand-lg" style="background: linear-gradient(135deg, #B8E6E1 0%, #87CEEB 50%, #5DADE2 100%); box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+<nav class="navbar navbar-expand-lg navbar-gradient">
   <div class="container-fluid px-4">
     <!-- Logo and Brand -->
     <a class="navbar-brand d-flex align-items-center text-dark text-decoration-none" href="/">
-      <img src="{{ asset('images/UDN-Logo.webp') }}" alt="UDN Logo" style="height: 50px; width: 50px; margin-right: 12px;">
-      <span class="fw-bold fs-5">Universitas<br>Doktor Nugroho</span>
+      <img src="{{ asset('images/UDN-Logo.webp') }}" alt="UDN Logo" class="me-3" style="height: 50px; width: 50px;">
+      <span class="fw-bold fs-5 lh-sm">Universitas<br>Doktor Nugroho</span>
     </a>
 
     <!-- Mobile Menu Toggle -->
     <button
-      class="navbar-toggler border-0 p-0"
+      class="navbar-toggler border-0 p-0 bg-transparent shadow-none"
       type="button"
       data-bs-toggle="offcanvas"
       data-bs-target="#mobileMenu"
       aria-controls="mobileMenu"
       aria-expanded="false"
-      aria-label="Toggle navigation"
-      style="background: none; box-shadow: none;">
+      aria-label="Toggle navigation">
       <div class="mobile-menu-icon">
         <span></span>
         <span></span>
@@ -49,9 +48,8 @@
              data-bs-toggle="dropdown"
              aria-expanded="false">
             Pendaftaran
-            <i class="bi bi-chevron-down ms-1"></i>
           </a>
-          <ul class="dropdown-menu border-0 shadow-lg" style="background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);">
+          <ul class="dropdown-menu border-0 shadow-lg dropdown-glassmorphism">
             <li><a class="dropdown-item py-2 px-3" href="#">PMB</a></li>
             <li><a class="dropdown-item py-2 px-3" href="#">Beasiswa</a></li>
             <li><hr class="dropdown-divider" /></li>
@@ -64,16 +62,16 @@
 </nav>
 
 <!-- Mobile Offcanvas Menu -->
-<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel" style="background: linear-gradient(135deg, #B8E6E1 0%, #87CEEB 50%, #5DADE2 100%); width: 60%;">
+<div class="offcanvas offcanvas-end mobile-menu-gradient w-60" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
   <div class="offcanvas-header border-bottom border-white border-opacity-25">
     <div class="d-flex align-items-center">
-      <img src="{{ asset('images/UDN-Logo.webp') }}" alt="UDN Logo" style="height: 40px; width: 40px; margin-right: 10px;">
-      <h6 class="offcanvas-title text-dark fw-bold mb-0" id="mobileMenuLabel">Universitas<br>Doktor Nugroho</h6>
+      <img src="{{ asset('images/UDN-Logo.webp') }}" alt="UDN Logo" class="me-2" style="height: 40px; width: 40px;">
+      <h6 class="offcanvas-title text-dark fw-bold mb-0 lh-sm" id="mobileMenuLabel">Universitas<br>Doktor Nugroho</h6>
     </div>
     <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body p-0">
-    <ul class="list-unstyled">
+    <ul class="list-unstyled mb-0">
       <li>
         <a href="/" class="d-block py-3 px-4 text-dark text-decoration-none border-bottom border-white border-opacity-25 {{ request()->is('/') ? 'bg-white bg-opacity-25 fw-bold' : '' }}">
           Home
@@ -100,7 +98,7 @@
           <i class="bi bi-chevron-down float-end"></i>
         </a>
         <div class="collapse" id="pendaftaranSubmenu">
-          <ul class="list-unstyled ps-4" style="background: rgba(255,255,255,0.1);">
+          <ul class="list-unstyled ps-4 mb-0 mobile-submenu-bg">
             <li><a href="#" class="d-block py-2 px-4 text-dark text-decoration-none border-bottom border-white border-opacity-10">PMB</a></li>
             <li><a href="#" class="d-block py-2 px-4 text-dark text-decoration-none border-bottom border-white border-opacity-10">Beasiswa</a></li>
             <li><a href="/kontak" class="d-block py-2 px-4 text-dark text-decoration-none {{ request()->is('kontak') ? 'fw-bold' : '' }}">Kontak</a></li>
@@ -116,58 +114,3 @@
   </div>
 </div>
 
-<style>
-/* Mobile Menu Icon */
-.mobile-menu-icon {
-  width: 30px;
-  height: 20px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.mobile-menu-icon span {
-  width: 100%;
-  height: 3px;
-  background-color: #333;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-/* Desktop hover effects */
-.navbar-nav .nav-link:hover {
-  color: #2c3e50 !important;
-  transform: translateY(-1px);
-  transition: all 0.3s ease;
-}
-
-/* Active state */
-.navbar-nav .nav-link.active {
-  color: #2c3e50 !important;
-}
-
-/* Dropdown styling */
-.dropdown-menu .dropdown-item:hover {
-  background-color: rgba(93, 173, 226, 0.1);
-  color: #2c3e50;
-}
-
-/* Mobile menu animations */
-.offcanvas {
-  transition: transform 0.3s ease-in-out;
-}
-
-/* Responsive adjustments */
-@media (max-width: 991.98px) {
-  .navbar-brand span {
-    font-size: 0.9rem !important;
-    line-height: 1.2;
-  }
-  
-  .navbar-brand img {
-    height: 40px !important;
-    width: 40px !important;
-  }
-}
-</style>
