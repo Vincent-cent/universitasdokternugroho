@@ -1,7 +1,5 @@
-<!-- Notable Alumni Section -->
 <section class="alumni-section py-5">
     <div class="container">
-        <!-- Section Header -->
         <div class="text-center mb-5">
             <div class="d-flex align-items-center justify-content-center mb-3">
                 <div class="alumni-line bg-danger me-3" style="width: 300px; height: 4px;"></div>
@@ -11,9 +9,7 @@
             <p class="text-muted fs-5 mb-0">Dari Tali Silaturahmi, Tumbuh Ide Inovatif, Terwujud Kemajuan Bersama.</p>
         </div>
 
-        <!-- Alumni Images Grid -->
         <div class="row g-4 justify-content-center">
-            <!-- Alumni Image 1 - Hansi Muler -->
             <div class="col-lg-4 col-md-6">
                 <a href="#" class="text-decoration-none alumni-link">
                     <div class="alumni-image-wrapper">
@@ -24,7 +20,6 @@
                 </a>
             </div>
 
-            <!-- Alumni Image 2 - Syukur Dahmiani -->
             <div class="col-lg-4 col-md-6">
                 <a href="#" class="text-decoration-none alumni-link">
                     <div class="alumni-image-wrapper">
@@ -35,7 +30,6 @@
                 </a>
             </div>
 
-            <!-- Alumni Image 3 - Jeffison-Laoe -->
             <div class="col-lg-4 col-md-6">
                 <a href="#" class="text-decoration-none alumni-link">
                     <div class="alumni-image-wrapper">
