@@ -1,0 +1,53 @@
+/* Alumni Section Styles */
+
+/* Alumni image wrapper */
+.alumni-image-wrapper {
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.alumni-image-wrapper:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+/* Alumni image hover effects */
+.alumni-image-hover {
+    transition: transform 0.3s ease;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.alumni-image-wrapper:hover .alumni-image-hover {
+    transform: scale(1.05);
+}
+
+/* Alumni link styles */
+.alumni-link:hover {
+    text-decoration: none !important;
+}
+
+/* Red accent lines */
+.alumni-line {
+    border-radius: 2px;
+}
+
+/* Section spacing */
+.alumni-section {
+    position: relative;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .alumni-line {
+        width: 60px !important;
+    }
+    
+    .alumni-image-wrapper:hover {
+        transform: translateY(-4px);
+    }
+}

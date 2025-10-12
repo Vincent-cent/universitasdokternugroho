@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-gradient">
   <div class="container-fluid px-4">
-    <!-- Logo and Brand -->
+    <!-- Logo -->
     <a class="navbar-brand d-flex align-items-center text-dark text-decoration-none" href="/">
-      <img src="{{ asset('images/UDN-Logo.webp') }}" alt="UDN Logo" class="me-3" style="height: 50px; width: 50px;">
+      <img src="{{ asset('images/UDN-Logo.webp') }}" alt="UDN Logo" class="me-3" style="height: 110px; width: 160px;">
       <span class="fw-bold fs-5 lh-sm">Universitas<br>Doktor Nugroho</span>
     </a>
 
-    <!-- Mobile Menu Toggle -->
+    <!-- Borgir -->
     <button
       class="navbar-toggler border-0 p-0 bg-transparent shadow-none"
       type="button"
@@ -22,7 +22,6 @@
       </div>
     </button>
 
-    <!-- Desktop Menu -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
@@ -64,10 +63,7 @@
 <!-- Mobile Offcanvas Menu -->
 <div class="offcanvas offcanvas-end mobile-menu-gradient w-60" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
   <div class="offcanvas-header border-bottom border-white border-opacity-25">
-    <div class="d-flex align-items-center">
-      <img src="{{ asset('images/UDN-Logo.webp') }}" alt="UDN Logo" class="me-2" style="height: 40px; width: 40px;">
-      <h6 class="offcanvas-title text-dark fw-bold mb-0 lh-sm" id="mobileMenuLabel">Universitas<br>Doktor Nugroho</h6>
-    </div>
+
     <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body p-0">
