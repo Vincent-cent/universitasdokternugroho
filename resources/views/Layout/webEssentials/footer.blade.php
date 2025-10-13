@@ -42,7 +42,7 @@
         <!-- Logo -->
         <div class="position-absolute" style="top: -60px; left: 50px; z-index: 10;">
             <div class="bg-white rounded-circle p-3" style="width: 120px; height: 120px; display: flex; align-items: center; justify-content: center;">
-                <img src="{{ asset('images/UDN-Logo.webp') }}" alt="Universitas Dokter Nugroho" class="img-fluid" style="max-height: 160px; max-width: 160px;">
+                <img src="{{ asset('images/UDN-Logo.png') }}" alt="Universitas Dokter Nugroho" class="img-fluid" style="max-height: 160px; max-width: 160px;">
             </div>
         </div>
 

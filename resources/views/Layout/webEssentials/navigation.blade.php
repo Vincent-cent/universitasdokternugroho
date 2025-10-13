@@ -2,7 +2,7 @@
   <div class="container-fluid px-4">
     <!-- Logo -->
     <a class="navbar-brand d-flex align-items-center text-dark text-decoration-none" href="/">
-      <img src="{{ asset('images/UDN-Logo.webp') }}" alt="UDN Logo" class="me-3" style="height: 110px; width: 160px;">
+      <img src="{{ asset('images/UDN-Logo.png') }}" alt="UDN Logo" class="me-3" style="height: 110px; width: 110px;">
       <span class="fw-bold fs-5 lh-sm">Universitas<br>Doktor Nugroho</span>
     </a>
 
