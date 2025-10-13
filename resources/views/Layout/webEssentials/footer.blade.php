@@ -38,8 +38,8 @@
         </div>
     </div>
 
-    <div class="text-white position-relative" style="background: rgba(34, 157, 201, 0.8) url('{{ asset('images/footer-bg.webp') }}') center/cover no-repeat; background-blend-mode: multiply;">
-        <!-- University Logo positioned at top-left, overlapping sections -->
+    <div class="text-white position-relative" style="background: rgba(23, 123, 159, 0.8) url('{{ asset('images/footer-bg.webp') }}') center/cover no-repeat; background-blend-mode: multiply;">
+        <!-- Logo -->
         <div class="position-absolute" style="top: -60px; left: 50px; z-index: 10;">
             <div class="bg-white rounded-circle p-3" style="width: 120px; height: 120px; display: flex; align-items: center; justify-content: center;">
                 <img src="{{ asset('images/UDN-Logo.webp') }}" alt="Universitas Dokter Nugroho" class="img-fluid" style="max-height: 160px; max-width: 160px;">
@@ -66,7 +66,6 @@
                 </div>
             </div>
             
-            <!-- Copyright section at bottom -->
             <div class="row mt-4">
                 <div class="col-12 text-center">
                     <p class="small mb-0">Copyright © 2025 Universitas Doktor Nugroho Magetan All Rights Reserved.</p>
