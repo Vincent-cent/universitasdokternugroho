@@ -11,8 +11,8 @@
         <h1 class="text-center text-primary mb-5">Daftar Berita</h1>
 
         <div class="row">
-            
-            @foreach ($beritas as $index => $berita)
+
+            @foreach ($beritas as $index => $berita) // nanti dikecilin gambarnya sama setiap baris isinya 3 bukan 2, limit beritanya perpage ada 15 doang
                 <div class="col-md-6 mb-4">
                     <div class="card border-primary h-100">
                         @if (!empty($berita->image) && file_exists(public_path('storage/' . $berita->image)))

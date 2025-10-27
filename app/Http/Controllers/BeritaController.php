@@ -22,7 +22,7 @@ class BeritaController extends Controller
         return view('Layout.berita.berita', [
         'beritas' => Berita::orderBy('published_at', 'desc')->get()
         ]);
-        }
+        } // nanti ini dibuat jadi kalau tidak ada hasilnya bakal return not found
     }
 
     public function show($id)
