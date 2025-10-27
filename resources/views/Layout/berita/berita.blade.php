@@ -3,10 +3,15 @@
 @section('title', 'Detail Berita - Universitas Doktor Nugroho')
 
 @section('content')
+<form action="/berita" method="GET" class="form-inline w-25 d-flex gap-2">
+    <input type="text" name="search" class="form-control" placeholder="Cari berita..." value="{{ request('search') }}">
+    <button type="submit" class="btn btn-primary">Cari</button>
+</form>
     <div class="container py-5">
         <h1 class="text-center text-primary mb-5">Daftar Berita</h1>
 
         <div class="row">
+            
             @foreach ($beritas as $index => $berita)
                 <div class="col-md-6 mb-4">
                     <div class="card border-primary h-100">

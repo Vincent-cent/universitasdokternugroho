@@ -18,6 +18,7 @@ class Berita extends Model
         'image',
         'keterangan_gambar'
     ];
+    
     /*
     public static $beritas = [
         [

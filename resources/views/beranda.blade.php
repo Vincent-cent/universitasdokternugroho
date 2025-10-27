@@ -5,7 +5,7 @@
 @section('content')
 </div>
 <section class="position-relative w-100 d-flex align-items-center justify-content-center text-white" 
-         style="height: 60vh; min-height: 400px; margin-top: -4.5rem; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ asset('images/banner.webp') }}') center/cover no-repeat;">
+         style="height: 60vh; min-height: 400px; margin-top: -3.5rem; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('{{ asset('images/banner.webp') }}') center/cover no-repeat;">
     <div class="text-center px-3">
         <h1 class="display-4 fw-bold mb-3">Selamat Datang di website <span class="text-info">ALUMNI</span></h1>
         <h2 class="h3 fw-bold">Universitas Doktor Nugroho</h2>
