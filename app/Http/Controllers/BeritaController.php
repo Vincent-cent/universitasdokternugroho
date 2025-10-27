@@ -12,17 +12,23 @@ class BeritaController extends Controller
 
     public function index(Request $request)
     {
-        if($request->has('search')) {
+        if ($request->has('search')) {
+            $search = $request->search;
             return view('Layout.berita.berita', [
                 'pagetitle' => 'Berita',
                 'mainmenu' => 'Berita',
-                'beritas' => Berita::where('title', 'like', '%' . $request->search . '%')->orderBy('published_at', 'desc')->get()
+                'beritas' => Berita::where('title', 'like', '%' . $search . '%')
+                    ->orderBy('published_at', 'desc')
+                    ->paginate(15)
+                    ->appends(['search' => $search]),
+                'search' => $search
             ]);
         } else {
-        return view('Layout.berita.berita', [
-        'beritas' => Berita::orderBy('published_at', 'desc')->get()
-        ]);
-        } // nanti ini dibuat jadi kalau tidak ada hasilnya bakal return not found
+            return view('Layout.berita.berita', [
+                'beritas' => Berita::orderBy('published_at', 'desc')->paginate(15),
+                'search' => null
+            ]);
+        }
     }
 
     public function show($id)
@@ -30,6 +36,4 @@ class BeritaController extends Controller
         $berita = Berita::find($id);
         return view('Layout.berita.beritadetail', compact('berita'));
     }
-
-
 }
