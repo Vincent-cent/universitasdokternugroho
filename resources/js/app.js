@@ -1,9 +1,7 @@
-//Custom Style
-import '../scss/app.scss';
-import '../css/app.css';
+import './bootstrap';
 
-//Import Boostrap, jangan di tambahin lagi ya
-import 'bootstrap-icons/font/bootstrap-icons.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import * as bootstrap from 'bootstrap';
-window.bootstrap = bootstrap;
+import Alpine from 'alpinejs';
+
+window.Alpine = Alpine;
+
+Alpine.start();

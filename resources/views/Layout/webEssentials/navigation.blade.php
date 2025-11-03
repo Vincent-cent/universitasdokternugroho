@@ -40,6 +40,10 @@
           <a class="nav-link text-dark fw-medium px-3 {{ request()->is('berita*') ? 'active border-bottom border-dark border-2' : '' }}" 
              href="/berita">Berita</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark fw-medium px-3 {{ request()->is('berita*') ? 'active border-bottom border-dark border-2' : '' }}" 
+             href="/berita">Login</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark fw-medium px-3 {{ request()->is('kontak') ? 'active border-bottom border-dark border-2' : '' }}"
              href="#"
