@@ -40,10 +40,17 @@
           <a class="nav-link text-dark fw-medium px-3 {{ request()->is('berita*') ? 'active border-bottom border-dark border-2' : '' }}" 
              href="/berita">Berita</a>
         </li>
+        @auth
+        <li class="nav-item">
+          <a class="nav-link text-dark fw-medium px-3 {{ request()->is('profile*') ? 'active border-bottom border-dark border-2' : '' }}" 
+             href="/profile">Profile</a>
+        </li>
+        @else
         <li class="nav-item">
           <a class="nav-link text-dark fw-medium px-3 {{ request()->is('login') ? 'active border-bottom border-dark border-2' : '' }}" 
              href="/login">Login</a>
         </li>
+        @endauth
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark fw-medium px-3 {{ request()->is('kontak') ? 'active border-bottom border-dark border-2' : '' }}"
              href="#"
@@ -56,6 +63,12 @@
             <li><a class="dropdown-item py-2 px-3" href="#">PMB</a></li>
             <li><a class="dropdown-item py-2 px-3" href="#">Beasiswa</a></li>
             <li><hr class="dropdown-divider" /></li>
+            @guest
+            <li><a class="dropdown-item py-2 px-3" href="/register">
+              <i class="bi bi-person-plus me-2"></i>Daftar Akun
+            </a></li>
+            <li><hr class="dropdown-divider" /></li>
+            @endguest
             <li><a class="dropdown-item py-2 px-3 {{ request()->is('kontak') ? 'active' : '' }}" href="/kontak">Kontak</a></li>
           </ul>
         </li>
@@ -110,6 +123,19 @@
           Berita
         </a>
       </li>
+      @auth
+      <li>
+        <a href="/profile" class="d-block py-3 px-4 text-dark text-decoration-none {{ request()->is('profile*') ? 'bg-white bg-opacity-25 fw-bold' : '' }}">
+          Profile
+        </a>
+      </li>
+      @else
+      <li>
+        <a href="/login" class="d-block py-3 px-4 text-dark text-decoration-none {{ request()->is('login') ? 'bg-white bg-opacity-25 fw-bold' : '' }}">
+          Login
+        </a>
+      </li>
+      @endauth
     </ul>
   </div>
 </div>
