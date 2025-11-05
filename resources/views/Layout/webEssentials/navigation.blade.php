@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-gradient">
+<nav class="navbar navbar-expand-lg custom-navbar-gradient">
   <div class="container-fluid px-4">
     <!-- Logo -->
     <a class="navbar-brand d-flex align-items-center text-dark text-decoration-none" href="/">
@@ -41,8 +41,8 @@
              href="/berita">Berita</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark fw-medium px-3 {{ request()->is('berita*') ? 'active border-bottom border-dark border-2' : '' }}" 
-             href="/berita">Login</a>
+          <a class="nav-link text-dark fw-medium px-3 {{ request()->is('login') ? 'active border-bottom border-dark border-2' : '' }}" 
+             href="/login">Login</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-dark fw-medium px-3 {{ request()->is('kontak') ? 'active border-bottom border-dark border-2' : '' }}"

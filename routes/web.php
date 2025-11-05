@@ -4,7 +4,22 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('beranda');
+});
+
+Route::get('/berita', [App\Http\Controllers\BeritaController::class, 'index']);
+Route::get('/berita/{id}', [App\Http\Controllers\BeritaController::class, 'show']);
+
+Route::get('/tentang', function () {
+    return view('tentang');
+});
+
+Route::get('/program', function () {
+    return view('program');
+});
+
+Route::get('/kontak', function () {
+    return view('kontak');
 });
 
 Route::get('/dashboard', function () {
