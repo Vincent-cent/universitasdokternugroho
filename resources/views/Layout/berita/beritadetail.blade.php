@@ -18,13 +18,17 @@
             <h1 id="judul-berita" class="fw-bold mb-2 text-center">{{ $berita->title }}</h1>
             <p class="text-muted mb-4">{{ $berita->author }} · {{ \Carbon\Carbon::parse($berita->published_at)->format('d M Y H:i') }}</p>
 
-            <div class="card mb-4">
-                @if(!empty($berita->image) && file_exists(public_path('storage/' . $berita->image)))
-                    <img src="{{ asset('storage/' . $berita->image) }}" class="card-img-top" alt="Gambar berita">
-                @else
-                    <img src="{{ asset('placeholder.jpg') }}" class="card-img-top" alt="Gambar placeholder">
-                @endif
-                <div class="card-footer text-muted small">{{ $berita->keterangan_gambar }}</div>
+            <div class="d-flex justify-content-center mb-4">
+                <div class="card" style="width: fit-content;">
+                    @if(!empty($berita->image) && file_exists(public_path('images/berita/' . $berita->image)))
+                        <img src="{{ asset('images/berita/' . $berita->image) }}" class="card-img-top" alt="Gambar berita"
+                            style="max-height: 500px; max-width: 100%; height: auto; object-fit: contain; background-color: #f8f9fa;">
+                    @else
+                        <img src="{{ asset('placeholder.jpg') }}" class="card-img-top" alt="Gambar placeholder"
+                            style="max-height: 500px; max-width: 100%; height: auto; object-fit: contain; background-color: #f8f9fa;">
+                    @endif
+                    <div class="card-footer text-muted small bg-light">{{ $berita->keterangan_gambar }}</div>
+                </div>
             </div>
 
             <section class="mb-4">

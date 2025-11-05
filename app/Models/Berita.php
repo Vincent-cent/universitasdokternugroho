@@ -10,13 +10,13 @@ class Berita extends Model
     use HasFactory;
     
     protected $fillable = [
-        'id',
         'title',
         'content',
         'author',
         'published_at',
         'image',
-        'keterangan_gambar'
+        'keterangan_gambar',
+        'show'
     ];
     
     /*

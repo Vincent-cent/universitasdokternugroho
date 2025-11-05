@@ -6,20 +6,25 @@
     <div class="container py-5">
         <h1 class="text-center text-primary mb-5">Daftar Berita</h1>
 
-        <form action="/berita" method="GET" class="mb-5 d-flex gap-2" style="max-width: 500px;">
-            <input type="text" name="search" class="form-control" placeholder="Cari judul berita..."
-                value="{{ request('search') }}">
-            <button type="submit" class="btn btn-primary">Cari</button>
-            @if (request('search'))
-                <a href="/berita" class="btn btn-secondary">Reset</a>
-            @endif
-        </form>
+        <div class="d-flex justify-content-between align-items-center mb-5">
+            <form action="/berita" method="GET" class="d-flex gap-2" style="max-width: 500px;">
+                <input type="text" name="search" class="form-control" placeholder="Cari judul berita..."
+                    value="{{ request('search') }}">
+                <button type="submit" class="btn btn-primary">Cari</button>
+                @if (request('search'))
+                    <a href="/berita" class="btn btn-secondary">Reset</a>
+                @endif
+            </form>
+
+            <a href="/berita/tambah" class="btn btn-success">+ Tambah Berita</a>
+        </div>
+
+        <a href="/admin/berita" class="btn btn-success">Ke Admin Berita</a>
 
         @if (isset($search) && $beritas->isEmpty())
             <div class="text-center py-5">
                 <h3 class="text-muted">"{{ $search }}" Tidak Ditemukan</h3>
                 <p class="text-secondary mt-3">Tidak ada berita yang sesuai dengan pencarian Anda.</p>
-                <a href="/berita" class="btn btn-primary mt-3">Lihat Semua Berita</a>
             </div>
         @elseif(!isset($search) && $beritas->isEmpty())
             <div class="text-center py-5">
@@ -30,9 +35,9 @@
                 @foreach ($beritas as $index => $berita)
                     <div class="col-md-4 mb-4">
                         <div class="card border-primary h-100 shadow-sm">
-                            @if (!empty($berita->image) && file_exists(public_path('storage/' . $berita->image)))
-                                <img src="{{ asset('storage/' . $berita->image) }}" class="card-img-top" alt="Gambar berita"
-                                    style="height: 250px; object-fit: cover;">
+                            @if (!empty($berita->image) && file_exists(public_path('images/berita/' . $berita->image)))
+                                <img src="{{ asset('images/berita/' . $berita->image) }}" class="card-img-top"
+                                    alt="Gambar berita" style="height: 250px; object-fit: cover;">
                             @else
                                 <img src="{{ asset('placeholder.jpg') }}" class="card-img-top" alt="Gambar placeholder"
                                     style="height: 250px; object-fit: cover;">
@@ -52,12 +57,12 @@
                             </div>
                         </div>
                     </div>
-        @endforeach
-    </div>
+                @endforeach
+            </div>
 
-    <div class="d-flex justify-content-center mt-5">
-        {{ $beritas->links('pagination::bootstrap-5') }}
-    </div>
-    @endif
+            <div class="d-flex justify-content-center mt-5">
+                {{ $beritas->links('pagination::bootstrap-5') }}
+            </div>
+        @endif
     </div>
 @endsection
