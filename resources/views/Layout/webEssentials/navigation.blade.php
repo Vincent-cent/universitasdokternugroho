@@ -77,7 +77,6 @@
   </div>
 </nav>
 
-<!-- Mobile Offcanvas Menu -->
 <div class="offcanvas offcanvas-end mobile-menu-gradient w-60" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
   <div class="offcanvas-header border-bottom border-white border-opacity-25">
 

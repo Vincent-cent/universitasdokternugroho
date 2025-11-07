@@ -2,9 +2,18 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\ProgramController;
+use App\Http\Controllers\Admin\ActivityController;
+use App\Http\Controllers\Admin\CollaboratorController;
 
 Route::get('/', function () {
     return view('beranda');
+});
+
+Route::middleware(['auth', 'can:admin'])->prefix('admin')->group(function () {
+    Route::resource('programs', ProgramController::class);
+    Route::resource('activities', ActivityController::class);
+    Route::resource('collaborators', CollaboratorController::class);
 });
 
 Route::get('/alumni', [App\Http\Controllers\AlumniController::class, 'index']);
