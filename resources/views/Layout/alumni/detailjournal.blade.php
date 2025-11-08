@@ -42,19 +42,19 @@
                             <p style="text-align: justify; line-height: 1.8;">{{ $journal->description }}</p>
                         </div>
 
-                        @auth
+                        @if(auth()->check() && auth()->user()->role === 'admin')
                             <div class="d-flex gap-2">
                                 <a href="{{ route('journal.edit', $journal->id) }}" class="btn btn-warning">
-                                    ✏️ Edit Journal
+                                    Edit Journal
                                 </a>
                                 <form action="{{ route('alumni.journal.delete', $journal->id) }}" method="POST"
                                     onsubmit="return confirm('Yakin ingin menghapus journal ini?')">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">🗑️ Hapus</button>
+                                    <button type="submit" class="btn btn-danger">Hapus Journal</button>
                                 </form>
                             </div>
-                        @endauth
+                        @endif
                     </div>
                 </div>
             </div>

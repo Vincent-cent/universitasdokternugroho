@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
                 'email' => 'admin@udn.ac.id',
                 'password' => Hash::make('password123'),
                 'email_verified_at' => now(),
+                'role' => 'admin',
             ],
             [
                 'name' => 'Dr. Ahmad Nugroho',
