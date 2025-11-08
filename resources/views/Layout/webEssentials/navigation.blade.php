@@ -29,8 +29,8 @@
              href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-dark fw-medium px-3 {{ request()->is('tentang') ? 'active border-bottom border-dark border-2' : '' }}" 
-             href="/tentang">Tentang</a>
+          <a class="nav-link text-dark fw-medium px-3 {{ request()->is('alumni') ? 'active border-bottom border-dark border-2' : '' }}" 
+             href="/alumni">Alumni</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-dark fw-medium px-3 {{ request()->is('program') ? 'active border-bottom border-dark border-2' : '' }}" 

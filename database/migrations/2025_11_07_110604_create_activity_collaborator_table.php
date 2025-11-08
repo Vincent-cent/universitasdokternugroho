@@ -16,7 +16,7 @@ return new class extends Migration
         $table->foreignId('activity_id')->constrained('activities')->cascadeOnDelete();
         $table->foreignId('collaborator_id')->constrained('collaborators')->cascadeOnDelete();
 
-        // Pivot data
+
         $table->string('role')->nullable();
         $table->enum('contribution_type', ['cash','in-kind','service'])->nullable();
         $table->decimal('contribution_amount', 15, 2)->nullable();

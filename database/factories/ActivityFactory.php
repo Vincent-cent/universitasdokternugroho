@@ -21,6 +21,7 @@ class ActivityFactory extends Factory
     {
         $title = $this->faker->sentence(3);
         return [
+            'thumbnail' => "https://loremflickr.com/640/480/community,event,volunteer?lock=" . rand(1, 9999),
             'title' => $title,
             'slug' => Str::slug($title.' '.$this->faker->year),
             'summary' => $this->faker->sentence(10),

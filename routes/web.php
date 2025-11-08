@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProgramController;
 use App\Http\Controllers\Admin\ActivityController;
 use App\Http\Controllers\Admin\CollaboratorController;
+use App\Http\Controllers\ProgramPageController;
+use App\Http\Controllers\ProgramSearchController;
+
 
 Route::get('/', function () {
     return view('beranda');
@@ -48,9 +51,10 @@ Route::get('/tentang', function () {
     return view('tentang');
 });
 
-Route::get('/program', function () {
-    return view('program');
-});
+Route::get('/program', [ProgramPageController::class, 'index'])->name('program.index');
+Route::get('/program/search', [ProgramSearchController::class, 'index'])->name('program.search');
+Route::get('/program/{slug}', [ProgramPageController::class, 'show'])->name('program.show');
+
 
 Route::get('/kontak', function () {
     return view('kontak');
