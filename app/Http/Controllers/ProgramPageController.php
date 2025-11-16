@@ -27,7 +27,7 @@ class ProgramPageController extends Controller
     }
     public function show($slug)
 {
-    $program = \App\Models\Program::with(['activities', 'collaborators'])
+    $program = Program::with(['activities', 'collaborators'])
         ->where('slug', $slug)
         ->firstOrFail();
 

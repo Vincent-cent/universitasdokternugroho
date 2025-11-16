@@ -23,7 +23,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Define admin gate based on user role
         Gate::define('admin', function (User $user) {
-            return $user->role === 'admin';
+            return $user && $user->role === 'admin';
         });
     }
 }
