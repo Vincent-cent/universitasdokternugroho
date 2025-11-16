@@ -45,19 +45,19 @@
                             <p style="text-align: justify; line-height: 1.8;">{{ $prestasi->description }}</p>
                         </div>
 
-                        @auth
+                        @if(auth()->check() && auth()->user()->role === 'admin')
                             <div class="d-flex gap-2">
                                 <a href="{{ route('prestasi.edit', $prestasi->id) }}" class="btn btn-warning">
-                                    ✏️ Edit Prestasi
+                                    Edit Prestasi
                                 </a>
                                 <form action="{{ route('alumni.prestasi.delete', $prestasi->id) }}" method="POST"
                                     onsubmit="return confirm('Yakin ingin menghapus prestasi ini?')">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">🗑️ Hapus</button>
+                                    <button type="submit" class="btn btn-danger">Hapus Prestasi</button>
                                 </form>
                             </div>
-                        @endauth
+                        @endif
                     </div>
                 </div>
             </div>

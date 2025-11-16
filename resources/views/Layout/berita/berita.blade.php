@@ -5,11 +5,11 @@
 @section('content')
     <div class="container py-5">
         <h1 class="text-center text-primary mb-5">
-            @auth
+            @if(auth()->check() && auth()->user()->role === 'admin')
                 Admin - Kelola Berita
             @else
                 Daftar Berita
-            @endauth
+            @endif
         </h1>
 
         @if (session('success'))
@@ -23,20 +23,23 @@
             <form action="/berita" method="GET" class="d-flex gap-2" style="max-width: 500px;">
                 <input type="text" name="search" class="form-control" placeholder="Cari judul berita..."
                     value="{{ request('search') }}">
-                @auth
+                @if(auth()->check() && auth()->user()->role === 'admin')
                     <input type="hidden" name="filter" value="{{ request('filter') }}">
-                @endauth
+                @endif
                 <button type="submit" class="btn btn-primary">Cari</button>
                 @if (request('search'))
-                    <a href="/berita{{ Auth::check() && request('filter') ? '?filter=' . request('filter') : '' }}"
+                    <a href="/berita{{ auth()->check() && auth()->user()->role === 'admin' && request('filter') ? '?filter=' . request('filter') : '' }}"
                         class="btn btn-secondary">Reset</a>
                 @endif
             </form>
 
-            <a href="/berita/tambah" class="btn btn-success">+ Tambah Berita</a>
+            {{-- Ubah dari admin only menjadi untuk semua user yang login --}}
+            @auth
+                <a href="/berita/tambah" class="btn btn-success">+ Tambah Berita</a>
+            @endauth
         </div>
 
-        @auth
+        @if(auth()->check() && auth()->user()->role === 'admin')
             <div class="mb-4">
                 <div class="btn-group" role="group" aria-label="Filter Status">
                     <a href="/berita?filter=semua{{ request('search') ? '&search=' . request('search') : '' }}"
@@ -53,7 +56,7 @@
                     </a>
                 </div>
             </div>
-        @endauth
+        @endif
 
         @if (isset($search) && $beritas->isEmpty())
             <div class="text-center py-5">
@@ -64,12 +67,13 @@
         @elseif (!isset($search) && $beritas->isEmpty())
             <div class="text-center py-5">
                 <h3 class="text-muted">Berita Tidak Ditemukan</h3>
-                @auth
+                @if(auth()->check() && auth()->user()->role === 'admin')
                     <p class="text-secondary">Tidak ada berita dengan filter yang dipilih.</p>
-                @endauth
+                @endif
             </div>
         @else
-            @auth
+            @if(auth()->check() && auth()->user()->role === 'admin')
+                <!-- Tampilan Admin: Table -->
                 <div class="table-responsive">
                     <table class="table table-striped table-hover">
                         <thead class="table-primary">
@@ -137,6 +141,7 @@
                     </table>
                 </div>
             @else
+                <!-- Tampilan User: Card -->
                 <div class="row">
                     @foreach ($beritas as $berita)
                         <div class="col-md-4 mb-4">
@@ -165,7 +170,7 @@
                         </div>
                     @endforeach
                 </div>
-            @endauth
+            @endif
 
             <div class="d-flex justify-content-center mt-5">
                 {{ $beritas->links('pagination::bootstrap-5') }}

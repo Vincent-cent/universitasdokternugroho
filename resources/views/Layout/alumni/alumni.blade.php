@@ -13,13 +13,13 @@
             </div>
         @endif
 
-        @auth
+        @if(auth()->check() && auth()->user()->role === 'admin')
             <div class="mb-4">
                 <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addAlumniModal">
                     + Tambah Alumni
                 </button>
             </div>
-        @endauth
+        @endif
 
         <div class="row">
             @forelse($alumnis as $alumni)

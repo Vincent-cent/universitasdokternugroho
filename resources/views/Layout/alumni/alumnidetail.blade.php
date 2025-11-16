@@ -60,17 +60,17 @@
                             </div>
                             <div class="d-flex gap-2 align-items-center">
                                 <h4 class="mb-0 fw-bold text-primary me-3">{{ $alumni->year_range }}</h4>
-                                @auth
+                                @if(auth()->check() && auth()->user()->role === 'admin')
                                     <a href="{{ route('alumni.edit', $alumni->id) }}" class="btn btn-sm btn-warning">
-                                        ✏️ Edit Alumni
+                                        Edit Alumni
                                     </a>
                                     <form action="{{ route('alumni.destroy', $alumni->id) }}" method="POST"
                                         style="display: inline;" onsubmit="return confirm('Yakin ingin menghapus alumni ini?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">🗑️ Hapus</button>
+                                        <button type="submit" class="btn btn-sm btn-danger">Hapus Alumni</button>
                                     </form>
-                                @endauth
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -93,11 +93,11 @@
 
                 <div class="tab-content border border-top-0 p-4" id="myTabContent">
                     <div class="tab-pane fade show active" id="journal" role="tabpanel">
-                        @auth
+                        @if(auth()->check() && auth()->user()->role === 'admin')
                             <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addJournalModal">
                                 ➕ Add Journal
                             </button>
-                        @endauth
+                        @endif
 
                         @forelse($alumni->journals as $journal)
                             <div class="card mb-3">
@@ -143,11 +143,11 @@
                     </div>
 
                     <div class="tab-pane fade" id="prestasi" role="tabpanel">
-                        @auth
+                        @if(auth()->check() && auth()->user()->role === 'admin')
                             <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addPrestasiModal">
                                 ➕ Add Prestasi
                             </button>
-                        @endauth
+                        @endif
 
                         @forelse($alumni->prestasis as $prestasi)
                             <div class="card mb-3">
