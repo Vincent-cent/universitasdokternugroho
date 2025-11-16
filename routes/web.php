@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ActivityController;
 use App\Http\Controllers\Admin\CollaboratorController;
 use App\Http\Controllers\ProgramPageController;
 use App\Http\Controllers\ProgramSearchController;
+use App\Http\Controllers\CollaboratorSearchController;
 
 
 Route::get('/', function () {
@@ -18,6 +19,19 @@ Route::middleware(['auth', 'can:admin'])->prefix('admin')->group(function () {
     Route::resource('activities', ActivityController::class);
     Route::resource('collaborators', CollaboratorController::class);
 });
+Route::get('/collaborator/search', [CollaboratorSearchController::class, 'index'])->name('collaborator.search');
+Route::prefix('admin')->middleware(['auth', 'can:admin'])->group(function () {
+    Route::resource('collaborators', CollaboratorController::class);
+});
+
+Route::middleware(['auth', 'can:admin'])->group(function () {
+    Route::get('/collaborator/create', [CollaboratorSearchController::class, 'create'])->name('collaborator.create');
+    Route::post('/collaborator', [CollaboratorSearchController::class, 'store'])->name('collaborator.store');
+    Route::get('/collaborator/{collaborator}/edit', [CollaboratorSearchController::class, 'edit'])->name('collaborator.edit');
+    Route::put('/collaborator/{collaborator}', [CollaboratorSearchController::class, 'update'])->name('collaborator.update');
+    Route::delete('/collaborator/{collaborator}', [CollaboratorSearchController::class, 'destroy'])->name('collaborator.destroy');
+});
+
 
 Route::get('/alumni', [App\Http\Controllers\AlumniController::class, 'index']);
 Route::post('/alumni', [App\Http\Controllers\AlumniController::class, 'store'])->name('alumni.store')->middleware('auth');

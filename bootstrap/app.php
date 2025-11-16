@@ -9,6 +9,11 @@ return Application::configure(basePath: dirname(__DIR__))
         web: __DIR__.'/../routes/web.php',
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
+        then: function () {
+            \Livewire\Livewire::setUpdateRoute(function ($handle) {
+                return \Illuminate\Support\Facades\Route::post('/livewire/update', $handle);
+            });
+        },
     )
     ->withMiddleware(function (Middleware $middleware): void {
         //

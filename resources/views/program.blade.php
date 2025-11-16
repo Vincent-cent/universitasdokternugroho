@@ -5,8 +5,6 @@
 @section('content')
   @include('Layout.program._program_featured')
   @include('Layout.program._program_latest')
-  
-  <!-- Search Programs Section -->
   <section class="py-5 bg-primary text-white">
     <div class="container text-center">
       <h2 class="fw-bold mb-3">Looking for Something Specific?</h2>
@@ -20,10 +18,6 @@
   @include('Layout.program._program_collaborators')
 
 
-  @if(auth()->check() && auth()->user()->role === 'admin')
-    <div class="container text-end my-4">
-      <a href="{{ route('programs.create') }}" class="btn btn-primary">+ Add Program</a>
-    </div>
-  @endif
+
 
 @endsection

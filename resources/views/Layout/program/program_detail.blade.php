@@ -11,8 +11,9 @@
           <strong>Category:</strong> {{ $program->category ?? 'General' }} |
           <strong>Status:</strong>
           <span class="badge 
-            @if($program->status === 'active') bg-success
-            @elseif($program->status === 'paused') bg-warning text-dark
+            @if($program->status === 'completed') bg-success
+            @elseif($program->status === 'ongoing' || $program->status === 'active') bg-primary
+            @elseif($program->status === 'coming soon' || $program->status === 'upcoming') bg-secondary
             @else bg-secondary
             @endif">
             {{ ucfirst($program->status) }}
@@ -25,18 +26,40 @@
 
     <div class="col-md-4 text-end">
       @if(auth()->check() && auth()->user()->role === 'admin')
-        <a href="{{ route('programs.edit', $program->id) }}" class="btn btn-outline-primary btn-sm">Edit</a>
-        <form action="{{ route('programs.destroy', $program->id) }}" method="POST" class="d-inline">
-          @csrf
-          @method('DELETE')
-          <button class="btn btn-outline-danger btn-sm" onclick="return confirm('Delete this program?')">Delete</button>
-        </form>
+        <div class="btn-group shadow-sm" role="group">
+          <a href="{{ route('programs.edit', $program->id) }}" 
+             class="btn btn-primary px-4 py-2 fw-semibold" 
+             style="border-radius: 25px 0 0 25px;">
+            <i class="bi bi-pencil-square me-2"></i>✏️ Edit Program
+          </a>
+          <form action="{{ route('programs.destroy', $program->id) }}" method="POST" class="d-inline">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-danger px-4 py-2 fw-semibold" 
+                    style="border-radius: 0 25px 25px 0;"
+                    onclick="return confirm('⚠️ Are you sure you want to delete this program? This action cannot be undone!')">
+              <i class="bi bi-trash3 me-2"></i>🗑️ Delete
+            </button>
+          </form>
+        </div>
       @endif
     </div>
   </div>
 
   <div class="mb-4">
-    <img src="{{ $program->hero_image_path ?? asset('images/placeholder-program.png') }}"
+    <img src="@php
+        if ($program->hero_image_path) {
+            if (str_starts_with($program->hero_image_path, 'http') || 
+                str_starts_with($program->hero_image_path, 'https') || 
+                str_starts_with($program->hero_image_path, '/')) {
+                echo $program->hero_image_path;
+            } else {
+                echo asset('storage/' . $program->hero_image_path);
+            }
+        } else {
+            echo asset('images/placeholder-program.png');
+        }
+    @endphp"
          alt="{{ $program->title }}"
          class="img-fluid rounded shadow-sm">
   </div>
@@ -61,7 +84,6 @@
 
   @if($program->activities->isNotEmpty())
     <div class="mb-5">
-      <h4 class="fw-bold mb-3">Activities Under This Program</h4>
       <div class="list-group">
         <h3 class="fw-bold mb-3">Activities Under This Program</h3>
         @foreach($program->activities as $activity)
@@ -79,7 +101,12 @@
                 </small>
             </div>
             </div>
-            <span class="badge bg-secondary rounded-pill">{{ ucfirst($activity->status) }}</span>
+            <span class="badge rounded-pill
+            @if($activity->status === 'completed') bg-success
+            @elseif($activity->status === 'ongoing' || $activity->status === 'active') bg-primary
+            @elseif($activity->status === 'coming soon' || $activity->status === 'upcoming') bg-secondary
+            @else bg-secondary
+            @endif">{{ ucfirst($activity->status) }}</span>
         </div>
         @endforeach
       </div>

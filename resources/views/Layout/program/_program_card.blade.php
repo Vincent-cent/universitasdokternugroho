@@ -1,9 +1,42 @@
 <div class="col-md-4 mb-4">
   <div class="card h-100 border-0 shadow-sm">
-    <img src="{{ $program->hero_image_path ?? $program->logo_path ?? asset('images/placeholder-program.png') }}"
+    @php
+      $imageSrc = asset('images/placeholder-program.png');
+      if($program->hero_image_path) {
+        $imageSrc = Str::startsWith($program->hero_image_path, ['http', 'https', '/']) ? $program->hero_image_path : asset('storage/' . $program->hero_image_path);
+      } elseif($program->logo_path) {
+        $imageSrc = Str::startsWith($program->logo_path, ['http', 'https', '/']) ? $program->logo_path : asset('storage/' . $program->logo_path);
+      }
+    @endphp
+    <img src="{{ $imageSrc }}"
      class="card-img-top"
-     alt="{{ $program->title }}">
+     alt="{{ $program->title }}"
+     style="height: 200px; width: 100%; object-fit: cover;">
 
+    @if(auth()->check() && auth()->user()->role === 'admin')
+    <div class="position-absolute top-0 end-0 p-3">
+      <div class="d-flex gap-2" role="group">
+        <a href="{{ route('programs.edit', $program) }}" 
+           class="btn btn-primary text-white d-flex align-items-center justify-content-center"
+           title="Edit Program"
+           style="width: 50px; height: 50px; border-radius: 8px; font-size: 1.4rem;">
+          ✏️
+        </a>
+        <form method="POST" action="{{ route('programs.destroy', $program) }}" 
+              style="display: inline;" 
+              onsubmit="return confirm('Are you sure you want to delete this program?')">
+          @csrf
+          @method('DELETE')
+          <button type="submit" 
+                  class="btn btn-danger text-white d-flex align-items-center justify-content-center"
+                  title="Delete Program"
+                  style="width: 50px; height: 50px; border-radius: 8px; font-size: 1.4rem;">
+            🗑️
+          </button>
+        </form>
+      </div>
+    </div>
+    @endif
 
     <div class="card-body">
       <small class="text-uppercase text-muted fw-bold d-block mb-2">
@@ -14,9 +47,11 @@
         {{ Str::limit($program->short_summary, 100) }}
       </p>
     </div>
-    <div class="card-footer bg-white border-0">
+    <div class="card-footer bg-white border-0 d-flex justify-content-between align-items-center">
       <small class="text-muted">{{ $program->created_at->format('F j, Y') }}</small>
-      <a href="{{ route('program.show', $program->slug) }}" class="stretched-link"></a>
+      <a href="{{ route('program.show', $program->slug) }}" class="btn btn-outline-primary btn-sm">
+        View Details
+      </a>
     </div>
   </div>
 </div>
