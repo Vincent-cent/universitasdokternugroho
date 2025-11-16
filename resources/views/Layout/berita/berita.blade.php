@@ -19,6 +19,81 @@
             </div>
         @endif
 
+        @if(!auth()->check() || auth()->user()->role !== 'admin')
+            @if($beritaTerkini->count() > 0)
+                <div class="mb-5">
+                    <h3 class="text-primary mb-4">Berita Terkini</h3>
+                    
+                    <div class="position-relative" style="padding: 0 60px;">
+                        <div id="beritaTerkiniCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                            <div class="carousel-inner">
+                                @foreach($beritaTerkini->chunk(2) as $index => $chunk)
+                                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                        <div class="row">
+                                            @foreach($chunk as $berita)
+                                                <div class="col-md-6 mb-3">
+                                                    <div class="card h-100 shadow-sm">
+                                                        @if (!empty($berita->image) && file_exists(public_path('images/berita/' . $berita->image)))
+                                                            <img src="{{ asset('images/berita/' . $berita->image) }}" 
+                                                                class="card-img-top" alt="{{ $berita->title }}"
+                                                                style="height: 200px; object-fit: cover;">
+                                                        @else
+                                                            <img src="{{ asset('placeholder.jpg') }}" 
+                                                                class="card-img-top" alt="Placeholder"
+                                                                style="height: 200px; object-fit: cover;">
+                                                        @endif
+                                                        <div class="card-body d-flex flex-column">
+                                                            <h6 class="card-title text-primary fw-bold">{{ Str::limit($berita->title, 60) }}</h6>
+                                                            <p class="text-muted small mb-2">
+                                                                📅 {{ \Carbon\Carbon::parse($berita->published_at)->format('d M Y') }}
+                                                            </p>
+                                                            <p class="card-text small flex-grow-1">
+                                                                {{ Str::limit($berita->content, 100) }}
+                                                            </p>
+                                                            <a href="/berita/{{ $berita->id }}" class="btn btn-sm btn-primary mt-2">
+                                                                Baca →
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        @if($beritaTerkini->count() > 2)
+                            <button class="carousel-control-prev position-absolute" type="button" 
+                                    data-bs-target="#beritaTerkiniCarousel" data-bs-slide="prev"
+                                    style="left: 0; top: 50%; transform: translateY(-50%); width: 50px;">
+                                <span class="bg-primary rounded-circle d-flex align-items-center justify-content-center" 
+                                      style="width: 45px; height: 45px;" aria-hidden="true">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                                    </svg>
+                                </span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next position-absolute" type="button" 
+                                    data-bs-target="#beritaTerkiniCarousel" data-bs-slide="next"
+                                    style="right: 0; top: 50%; transform: translateY(-50%); width: 50px;">
+                                <span class="bg-primary rounded-circle d-flex align-items-center justify-content-center" 
+                                      style="width: 45px; height: 45px;" aria-hidden="true">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                                </span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        @endif
+                    </div>
+                </div>
+
+                <hr class="my-5">
+            @endif
+        @endif
+
         <div class="d-flex justify-content-between align-items-center mb-4">
             <form action="/berita" method="GET" class="d-flex gap-2" style="max-width: 500px;">
                 <input type="text" name="search" class="form-control" placeholder="Cari judul berita..."
@@ -33,7 +108,6 @@
                 @endif
             </form>
 
-            {{-- Ubah dari admin only menjadi untuk semua user yang login --}}
             @auth
                 <a href="/berita/tambah" class="btn btn-success">+ Tambah Berita</a>
             @endauth
@@ -141,7 +215,7 @@
                     </table>
                 </div>
             @else
-                <!-- Tampilan User: Card -->
+                <h4 class="text-primary mb-4">Semua Berita</h4>
                 <div class="row">
                     @foreach ($beritas as $berita)
                         <div class="col-md-4 mb-4">

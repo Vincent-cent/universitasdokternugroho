@@ -15,6 +15,11 @@ class BeritaController extends Controller
 
         $query = Berita::query();
 
+        $beritaTerkini = Berita::where('show', true)
+        ->inRandomOrder()
+        ->limit(6)
+        ->get();
+
         if (!Auth::check() || Auth::user()->role !== 'admin') {
             $query->where('show', true);
         } else {
@@ -31,7 +36,7 @@ class BeritaController extends Controller
 
         $beritas = $query->orderBy('published_at', 'desc')->paginate(9);
 
-        return view('Layout.berita.berita', compact('beritas', 'search', 'filter'));
+        return view('Layout.berita.berita', compact('beritas', 'search', 'filter', 'beritaTerkini'));
     }
 
     public function show($id)

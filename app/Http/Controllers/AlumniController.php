@@ -3,24 +3,36 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumni;
-use App\Models\Journal;
-use App\Models\Prestasi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class AlumniController extends Controller
 {
-    // Alumni Methods
-    public function index()
+    public function index(Request $request)
     {
-        $alumnis = Alumni::orderBy('year_range', 'desc')->paginate(9);
-        return view('Layout.alumni.alumni', compact('alumnis'));
+        $search = $request->input('search');
+
+        // Ambil 6 alumni random untuk carousel
+        $alumniFeatured = Alumni::inRandomOrder()->limit(6)->get();
+
+        // Query untuk semua alumni dengan search
+        $query = Alumni::query();
+
+        if ($search) {
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                  ->orWhere('angkatan', 'like', '%' . $search . '%');
+            });
+        }
+
+        $alumnis = $query->orderBy('year_range', 'desc')->paginate(9);
+
+        return view('Layout.alumni.alumni', compact('alumnis', 'alumniFeatured', 'search'));
     }
 
     public function show($id)
     {
-        $alumni = Alumni::with(['journals', 'prestasis'])->findOrFail($id);
-        return view('Layout.alumni.alumnidetail', compact('alumni'));
+        $alumni = Alumni::findOrFail($id);
+        return view('Layout.alumni.detailAlumni', compact('alumni'));
     }
 
     public function store(Request $request)
@@ -45,7 +57,7 @@ class AlumniController extends Controller
 
         Alumni::create($validated);
 
-        return redirect('/alumni')->with('success', 'Alumni berhasil ditambahkan!');
+        return redirect()->route('alumni.index')->with('success', 'Alumni berhasil ditambahkan!');
     }
 
     public function edit($id)
