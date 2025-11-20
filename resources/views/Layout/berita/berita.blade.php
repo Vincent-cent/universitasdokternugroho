@@ -147,7 +147,6 @@
             </div>
         @else
             @if(auth()->check() && auth()->user()->role === 'admin')
-                <!-- Tampilan Admin: Table -->
                 <div class="table-responsive">
                     <table class="table table-striped table-hover">
                         <thead class="table-primary">
@@ -215,6 +214,7 @@
                     </table>
                 </div>
             @else
+            
                 <h4 class="text-primary mb-4">Semua Berita</h4>
                 <div class="row">
                     @foreach ($beritas as $berita)

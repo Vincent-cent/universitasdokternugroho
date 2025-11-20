@@ -31,7 +31,7 @@ class ProgramSearch extends Component
 
     public function deleteProgram($programId)
     {
-        // Check if user is authenticated and has admin role
+        // Admin Check
         if (!auth()->check() || auth()->user()->role !== 'admin') {
             session()->flash('error', 'You do not have permission to delete programs.');
             return;
@@ -49,7 +49,7 @@ class ProgramSearch extends Component
 
     public function editProgram($programId)
     {
-        // Check if user is authenticated and has admin role
+        // Admin Check
         if (!auth()->check() || auth()->user()->role !== 'admin') {
             session()->flash('error', 'You do not have permission to edit programs.');
             return;

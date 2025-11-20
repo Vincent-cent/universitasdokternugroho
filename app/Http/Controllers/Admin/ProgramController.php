@@ -75,7 +75,7 @@ class ProgramController extends Controller
             'public' => 'nullable|boolean',
         ]);
 
-        // Handle checkbox - if not checked, it won't be in the request
+        // Handle checkbox 
         $validated['public'] = $request->has('public');
 
         // Handle image uploads

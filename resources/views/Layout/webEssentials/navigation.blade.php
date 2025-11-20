@@ -50,28 +50,15 @@
           <a class="nav-link text-dark fw-medium px-3 {{ request()->is('login') ? 'active border-bottom border-dark border-2' : '' }}" 
              href="/login">Login</a>
         </li>
-        @endauth
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-dark fw-medium px-3 {{ request()->is('kontak') ? 'active border-bottom border-dark border-2' : '' }}"
-             href="#"
-             role="button"
-             data-bs-toggle="dropdown"
-             aria-expanded="false">
-            Pendaftaran
-          </a>
-          <ul class="dropdown-menu border-0 shadow-lg dropdown-glassmorphism">
-            <li><a class="dropdown-item py-2 px-3" href="#">PMB</a></li>
-            <li><a class="dropdown-item py-2 px-3" href="#">Beasiswa</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            @guest
-            <li><a class="dropdown-item py-2 px-3" href="/register">
-              <i class="bi bi-person-plus me-2"></i>Daftar Akun
-            </a></li>
-            <li><hr class="dropdown-divider" /></li>
-            @endguest
-            <li><a class="dropdown-item py-2 px-3 {{ request()->is('kontak') ? 'active' : '' }}" href="/kontak">Kontak</a></li>
-          </ul>
+        {{-- <li class="nav-item">
+          <a class="nav-link text-dark fw-medium px-3 {{ request()->is('register') ? 'active border-bottom border-dark border-2' : '' }}" 
+             href="/register">register</a>
+        </li> --}}
+          <li class="nav-item">
+          <a class="nav-link text-dark fw-medium px-3 {{ request()->is('kontak') ? 'active border-bottom border-dark border-2' : '' }}" 
+             href="/kontak">Kontak</a>
         </li>
+        @endauth
       </ul>
     </div>
   </div>

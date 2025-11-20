@@ -16,7 +16,6 @@
                     </div>
 
                     <div class="card-body p-4">
-                        <!-- Session Status -->
                         @if (session('status'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
                                 {{ session('status') }}
@@ -28,7 +27,6 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
-                            <!-- Email Address -->
                             <div class="mb-3">
                                 <label for="email" class="form-label fw-bold">
                                     <i class="bi bi-envelope me-2 text-primary"></i>Email Address
@@ -92,25 +90,7 @@
                     </div>
 
                     <!-- Footer -->
-                    <div class="card-footer bg-light text-center py-3">
-                        <small class="text-muted">
-                            <i class="bi bi-shield-check me-1 text-success"></i>
-                            Login aman dengan enkripsi SSL
-                        </small>
-                    </div>
-                </div>
-
-                <!-- Test Accounts Info -->
-                <div class="card mt-4 border-info">
-                    <div class="card-header bg-info text-white">
-                        <h6 class="mb-0"><i class="bi bi-info-circle me-2"></i>Akun Test</h6>
-                    </div>
-                    <div class="card-body">
-                        <small class="text-muted">
-                            <strong>Email:</strong> admin@udn.ac.id, ahmad@udn.ac.id, siti@udn.ac.id<br>
-                            <strong>Password:</strong> password123
-                        </small>
-                    </div>
+                
                 </div>
 
                 <!-- Back to Home -->

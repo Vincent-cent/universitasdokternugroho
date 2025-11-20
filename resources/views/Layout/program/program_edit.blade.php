@@ -40,8 +40,13 @@
 
                         <div class="mb-3">
                             <label for="category" class="form-label fw-semibold">Category</label>
-                            <input type="text" class="form-control @error('category') is-invalid @enderror" 
-                                   id="category" name="category" value="{{ old('category', $program->category) }}">
+                            <select class="form-select @error('category') is-invalid @enderror" id="category" name="category">
+                                <option value="">Select a category...</option>
+                                <option value="Charity" {{ old('category', $program->category) === 'Charity' ? 'selected' : '' }}> Charity</option>
+                                <option value="Education" {{ old('category', $program->category) === 'Education' ? 'selected' : '' }}> Education</option>
+                                <option value="Community" {{ old('category', $program->category) === 'Community' ? 'selected' : '' }}> Community</option>
+                                <option value="Research" {{ old('category', $program->category) === 'Research' ? 'selected' : '' }}> Research</option>
+                            </select>
                             @error('category')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

@@ -46,11 +46,8 @@
                     <!-- Action Buttons -->
                     <div class="row">
                         <div class="col-md-6">
-                            <h6 class="text-primary mb-3">Aksi Akun</h6>
+                            <h6 class="text-primary mb-3">Settings</h6>
                             <div class="d-grid gap-2">
-                                <a href="/dashboard" class="btn btn-outline-primary">
-                                    <i class="bi bi-speedometer2 me-2"></i>Dashboard
-                                </a>
                                 <button class="btn btn-outline-secondary" disabled>
                                     <i class="bi bi-pencil-square me-2"></i>Edit Profile (Coming Soon)
                                 </button>
