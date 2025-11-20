@@ -69,7 +69,7 @@ class BeritaController extends Controller
             'title' => 'required|string|max:255',
             'content' => 'required|string',
             'author' => 'required|string|max:255',
-            'published_at' => 'nullable|date', // Ubah dari 'required' menjadi 'nullable'
+            'published_at' => 'nullable|date',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'keterangan_gambar' => 'nullable|string|max:255',
         ]);

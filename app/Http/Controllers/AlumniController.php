@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumni;
+use App\Models\Journal;
+use App\Models\Prestasi;
 use Illuminate\Http\Request;
 
 class AlumniController extends Controller
@@ -11,10 +13,8 @@ class AlumniController extends Controller
     {
         $search = $request->input('search');
 
-        // Ambil 6 alumni random untuk carousel
         $alumniFeatured = Alumni::inRandomOrder()->limit(6)->get();
 
-        // Query untuk semua alumni dengan search
         $query = Alumni::query();
 
         if ($search) {
@@ -32,7 +32,7 @@ class AlumniController extends Controller
     public function show($id)
     {
         $alumni = Alumni::findOrFail($id);
-        return view('Layout.alumni.detailAlumni', compact('alumni'));
+        return view('Layout.alumni.alumnidetail', compact('alumni'));
     }
 
     public function store(Request $request)
@@ -57,7 +57,7 @@ class AlumniController extends Controller
 
         Alumni::create($validated);
 
-        return redirect()->route('alumni.index')->with('success', 'Alumni berhasil ditambahkan!');
+        return redirect('/alumni')->with('success', 'Alumni berhasil ditambahkan!');
     }
 
     public function edit($id)

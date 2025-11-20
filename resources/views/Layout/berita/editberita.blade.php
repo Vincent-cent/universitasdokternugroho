@@ -25,6 +25,8 @@
                 <input type="text" class="form-control" id="title" name="title" 
                     value="{{ old('title', $berita->title) }}" required>
             </div>
+
+            <input type="hidden" name="published_at" value="{{ $berita->published_at }}">
             
             <div class="mb-3">
                 <label for="content" class="form-label">Isi Berita</label>
