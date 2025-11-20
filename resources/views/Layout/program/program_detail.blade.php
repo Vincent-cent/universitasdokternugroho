@@ -30,15 +30,15 @@
           <a href="{{ route('programs.edit', $program->id) }}" 
              class="btn btn-primary px-4 py-2 fw-semibold" 
              style="border-radius: 25px 0 0 25px;">
-            <i class="bi bi-pencil-square me-2"></i>✏️ Edit Program
+            <i class="fas fa-edit me-2"></i>Edit Program
           </a>
           <form action="{{ route('programs.destroy', $program->id) }}" method="POST" class="d-inline">
             @csrf
             @method('DELETE')
             <button class="btn btn-danger px-4 py-2 fw-semibold" 
                     style="border-radius: 0 25px 25px 0;"
-                    onclick="return confirm('⚠️ Are you sure you want to delete this program? This action cannot be undone!')">
-              <i class="bi bi-trash3 me-2"></i>🗑️ Delete
+                    onclick="return confirm('Are you sure you want to delete this program? This action cannot be undone!')">
+              <i class="fas fa-trash me-2"></i>Delete
             </button>
           </form>
         </div>

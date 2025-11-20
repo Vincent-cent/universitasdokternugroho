@@ -103,7 +103,6 @@
         </div>
     </div>
 
-    <!-- Password Toggle Script -->
     <script>
         document.getElementById('togglePassword').addEventListener('click', function() {
             const passwordField = document.getElementById('password');

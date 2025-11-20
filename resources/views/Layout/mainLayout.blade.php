@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title','Universitas Doktor Nugroho')</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    @vite(['resources/css/app.css', 'resources/css/navigation.css', 'resources/css/alumni.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/navigation.css', 'resources/css/alumni.css', 'resources/css/modern-navigation.css', 'resources/js/app.js', 'resources/js/modern-navigation.js'])
     @livewireStyles
 </head>
 <body class="d-flex flex-column min-vh-100">
