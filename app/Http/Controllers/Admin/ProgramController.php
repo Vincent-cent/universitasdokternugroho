@@ -34,11 +34,9 @@ class ProgramController extends Controller
             'public' => 'nullable|boolean',
         ]);
 
-        // Handle checkbox - if not checked, it won't be in the request
         $validated['public'] = $request->has('public');
         $validated['status'] = $validated['status'] ?? 'active';
 
-        // Handle image uploads
         if ($request->hasFile('logo_path')) {
             $validated['logo_path'] = $request->file('logo_path')->store('programs', 'public');
         }
@@ -75,12 +73,9 @@ class ProgramController extends Controller
             'public' => 'nullable|boolean',
         ]);
 
-        // Handle checkbox 
         $validated['public'] = $request->has('public');
 
-        // Handle image uploads
         if ($request->hasFile('logo_path')) {
-            // Delete old logo if exists
             if ($program->logo_path) {
                 \Storage::disk('public')->delete($program->logo_path);
             }
@@ -88,7 +83,6 @@ class ProgramController extends Controller
         }
         
         if ($request->hasFile('hero_image_path')) {
-            // Delete old hero image if exists
             if ($program->hero_image_path) {
                 \Storage::disk('public')->delete($program->hero_image_path);
             }

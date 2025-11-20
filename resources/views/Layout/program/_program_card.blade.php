@@ -19,8 +19,8 @@
         <a href="{{ route('programs.edit', $program) }}" 
            class="btn btn-primary text-white d-flex align-items-center justify-content-center"
            title="Edit Program"
-           style="width: 50px; height: 50px; border-radius: 8px; font-size: 1.4rem;">
-          ✏️
+           style="width: 50px; height: 50px; border-radius: 8px;">
+          <i class="fas fa-edit"></i>
         </a>
         <form method="POST" action="{{ route('programs.destroy', $program) }}" 
               style="display: inline;" 
@@ -30,8 +30,8 @@
           <button type="submit" 
                   class="btn btn-danger text-white d-flex align-items-center justify-content-center"
                   title="Delete Program"
-                  style="width: 50px; height: 50px; border-radius: 8px; font-size: 1.4rem;">
-            🗑️
+                  style="width: 50px; height: 50px; border-radius: 8px;">
+            <i class="fas fa-trash"></i>
           </button>
         </form>
       </div>
@@ -39,7 +39,18 @@
     @endif
 
     <div class="card-body">
-      <small class="text-uppercase text-muted fw-bold d-block mb-2">
+      <small class="text-uppercase text-muted fw-bold d-flex align-items-center mb-2">
+        @if($program->category === 'Charity')
+          <i class="fas fa-heart text-danger me-2"></i>
+        @elseif($program->category === 'Education')
+          <i class="fas fa-graduation-cap text-primary me-2"></i>
+        @elseif($program->category === 'Community')
+          <i class="fas fa-users text-success me-2"></i>
+        @elseif($program->category === 'Research')
+          <i class="fas fa-microscope text-info me-2"></i>
+        @else
+          <i class="fas fa-folder text-secondary me-2"></i>
+        @endif
         {{ $program->category ?? 'General' }}
       </small>
       <h5 class="card-title fw-semibold">{{ $program->title }}</h5>

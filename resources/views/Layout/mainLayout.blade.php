@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     @vite(['resources/css/app.css', 'resources/css/navigation.css', 'resources/css/alumni.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/navigation.css', 'resources/css/alumni.css', 'resources/css/modern-navigation.css', 'resources/js/app.js', 'resources/js/modern-navigation.js'])
     @livewireStyles
 </head>
 <body class="d-flex flex-column min-vh-100">
