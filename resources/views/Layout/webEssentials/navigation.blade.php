@@ -32,8 +32,13 @@
         <span class="nav-text">Berita</span>
       </a>
 
+      <!-- Kontak -->
+      <a href="/kontak" class="nav-icon-item {{ request()->is('kontak*') ? 'active' : '' }}">
+        <i class="fas fa-envelope nav-icon"></i>
+        <span class="nav-text">Kontak</span>
+      </a>
+
       @auth
-        <!-- Profile (when logged in) -->
         <div class="user-profile">
           <a href="/profile" class="profile-btn">
             <i class="fas fa-user"></i>
@@ -94,6 +99,12 @@
         <a href="/berita" class="d-flex align-items-center py-3 px-4 text-white text-decoration-none border-bottom border-white border-opacity-10 {{ request()->is('berita*') ? 'bg-danger' : '' }}">
           <i class="far fa-newspaper me-3"></i>
           Berita
+        </a>
+      </li>
+      <li>
+        <a href="/kontak" class="d-flex align-items-center py-3 px-4 text-white text-decoration-none border-bottom border-white border-opacity-10 {{ request()->is('kontak*') ? 'bg-danger' : '' }}">
+          <i class="fas fa-envelope me-3"></i>
+          Kontak
         </a>
       </li>
       @auth
